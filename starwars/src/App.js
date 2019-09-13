@@ -2,7 +2,12 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import './App.css';
 import StarCard from "./StarCard";
-import { Container } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react';
+import styled, { ThemeProvider } from 'styled-components';
+
+const Box = styled.div`
+  color: ${props => props.theme.color};
+`
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -23,7 +28,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <Container className="container"><h1 className="Header">React Wars</h1></Container>
+
+      <Container className="container">
+        <ThemeProvider theme={{color:'mediumseagreen'}}>
+        <h1><Box className="Header">React Wars</Box></h1>
+        </ThemeProvider>
+        </Container>
       {data.map(dayta => {
         return (
           <StarCard 
